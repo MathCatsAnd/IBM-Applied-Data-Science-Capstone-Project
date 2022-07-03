@@ -61,13 +61,15 @@ def get_pie_chart(entered_site):
     if entered_site == 'ALL':
         fig = px.pie(spacex_df, values='class', 
         names='Launch Site', 
-        title='Success Rate')
+        title='Total Success Launches by Site')
+        fig.update_traces(hoverinfo='label', textinfo='value+percent')
         return fig
     else:
         filtered_df = spacex_df[spacex_df['Launch Site']==entered_site]
         fig = px.pie(filtered_df, values='class', 
         names='Launch Site', 
-        title='Success Rate')
+        title='Total Success Launches by Site')
+        fig.update_traces(hoverinfo='label', textinfo='value+percent')
         return fig
 
 
@@ -94,4 +96,4 @@ def get_scatter_chart(entered_site,vrange):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(port=8054)
+    app.run_server(port=8050)
